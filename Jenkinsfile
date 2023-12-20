@@ -5,16 +5,16 @@ pipeline {
         gradle 'gradle'
     }
     stages{
-        stage('vars-checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/maheshkattta/env-vars.git']]])
-            }
-        }
-        stage('inject-vars') {
-            steps {
-                sh 'cp application.properties src/main/resources/applicaton.properties'
-            }
-        }
+        stage('Injecting Variales') {
+                    steps {
+                        dir("/var/lib/jenkins/workspace/$JOB_NAME-properties"){
+                            git branch: 'sandbox', credentialsId: 'github_token', url: 'https://github.com/maheshkattta/env-vars.git'
+                            sh 'chmod +x ./copy-creds.sh'
+                            sh './copy-creds.sh'
+                        }
+                    }
+                }
+
         stage('gradle build') {
             steps {
                 sh 'gradle wrapper && ./gradlew clean build'
