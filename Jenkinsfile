@@ -23,11 +23,18 @@ pipeline {
         stage('Copying Jar to target server') {
             steps {
                 sh 'scp build/libs/monkeystore-0.0.1-SNAPSHOT.jar  mahi@manulabs.cloud:/home/mahi/monkeystore-0.0.1-SNAPSHOT-$BUILD_NUMBER.jar'
+                sh 'chmod +x deploy.sh'
+                sh "ssh mahi@manulabs.cloud '/home/mahi/deploy.sh'" 
             }
         }
         stage('start jar') {
             steps {
                 sh 'ssh mahi@manulabs.cloud /home/mahi/deploy.sh'
+            }
+        }
+        stage('check service') {
+            steps {
+                sh 'ssh mahi@manulabs.cloud $(ps -ef | grep java)'
             }
         }
     }
