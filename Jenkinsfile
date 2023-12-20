@@ -12,7 +12,7 @@ pipeline{
         }
         stage('Copying Jar to target server'){
             steps{
-                sh 'scp build/libs/ecommerence-0.0.1-SNAPSHOT.jar  mahi@manulabs.cloud:/home/mahi/ecommerence-0.0.1-SNAPSHOT-$BUILD_NUMBER.jar'
+                sh 'scp build/libs/monkeystore-0.0.1-SNAPSHOT.jar  mahi@manulabs.cloud:/home/mahi/monkeystore-0.0.1-SNAPSHOT-$BUILD_NUMBER.jar'
             }
         }
         stage('start jar'){
