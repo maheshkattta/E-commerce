@@ -1,4 +1,4 @@
-PID=$(ps -ef | grep ecommerence | grep -v grep | awk '{print $2}')
+PID=$(ps -ef | grep monkeystore | grep -v grep | awk '{print $2}')
 if [ -z "$PID" ]; then
     echo "no process running"
 else
