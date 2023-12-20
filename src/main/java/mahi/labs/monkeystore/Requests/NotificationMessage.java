@@ -12,6 +12,7 @@ import java.util.Map;
 public class NotificationMessage {
 
     private String recipientToken;
+    private String name;
     private String title;
     private String body;
     private Map<String,String> data;

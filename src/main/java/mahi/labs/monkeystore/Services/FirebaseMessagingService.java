@@ -20,7 +20,7 @@ public class FirebaseMessagingService {
 
     public String sendNotificationByToken(NotificationMessage notificationMessage) {
         try {
-            logger.info("Sending notification to token: {}", notificationMessage.getRecipientToken());
+            logger.info("Sending notification to token: {}", notificationMessage.getName());
 
             Notification notification = Notification.builder()
                     .setTitle(notificationMessage.getTitle())
