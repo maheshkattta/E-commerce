@@ -6,18 +6,15 @@ pipeline{
     }
     stages{
         stage('vars-checkout'){
-            steps{
                steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/maheshkattta/env-vars.git']]])
                }
-            }
+           }
         }
         stage('inject-vars'){
-            steps{
                steps {
                 sh 'cp application.properties src/main/resources/applicaton.properties'
                }
-            }
         }
         stage('gradle build'){
             steps{
