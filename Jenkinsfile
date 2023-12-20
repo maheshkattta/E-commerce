@@ -32,10 +32,5 @@ pipeline {
                 sh 'ssh mahi@manulabs.cloud /home/mahi/deploy.sh'
             }
         }
-        stage('check service') {
-            steps {
-                sh 'ssh mahi@manulabs.cloud $(ps -ef | grep java)'
-            }
-        }
     }
 }
