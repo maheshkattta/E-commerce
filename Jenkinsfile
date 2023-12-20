@@ -8,7 +8,7 @@ pipeline {
         stage('Injecting Variales') {
                     steps {
                         dir("/var/lib/jenkins/workspace/$JOB_NAME-properties"){
-                            git branch: 'sandbox', credentialsId: 'github_token', url: 'https://github.com/maheshkattta/env-vars.git'
+                            git branch: 'main', credentialsId: 'github_token', url: 'https://github.com/maheshkattta/env-vars.git'
                             sh 'chmod +x ./copy-creds.sh'
                             sh './copy-creds.sh'
                         }
