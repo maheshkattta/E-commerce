@@ -20,13 +20,5 @@ pipeline{
                 sh 'ssh mahi@manulabs.cloud /home/mahi/deploy.sh'
             }
         }
-            post{
-                success{
-                    echo "========Pipeline executed successfully========"
-                }
-                failure{
-                    echo "========Pipeline execution failed========"
-                }
-            }
-        }
+   }
     }
