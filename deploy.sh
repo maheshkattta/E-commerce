@@ -13,4 +13,4 @@ nohup java -javaagent:/home/mahi/newrelic/newrelic.jar -jar "/home/mahi/$LATEST_
 NEW_PID=$(ps -ef | grep monkeystore | grep -v grep | awk '{print $2}')
 echo "New build started with $NEW_PID"
 sleep 5
-ps -ef | grep "monkeystore-0.0.1"
+ps -ef | grep "monkeystore-0.0.1" | grep -v grep
